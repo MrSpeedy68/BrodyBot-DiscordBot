@@ -25,7 +25,7 @@ async def bark(context):
 async def on_message(message):
     if message.content == "give me a woof":
         general_channel = client.get_channel(685833302246293537)
-        await general_channel.send('WOOF WOOF')
+        await general_channel.send('Bababooey')
     await client.process_commands(message)
 
 # Run the client on the server
