@@ -13,13 +13,12 @@ client = commands.Bot(command_prefix='!')
 
 @client.command(name='bark')
 async def bark(context):
-    await context.message.channel.send("WOOF WOOF")
+    await context.message.channel.send("WOOF BORK")
 
 # @client.event
 # async def on_ready():
 #     # DO STUFF...
 #     general_channel = client.get_channel(685833302246293537) #insert channel ID
-
 #     await general_channel.send('Hello Bros!')
 
 @client.event
