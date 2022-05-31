@@ -28,5 +28,10 @@ async def on_message(message):
         await general_channel.send('Bababooey')
     await client.process_commands(message)
 
+@client.command(name='brodypic')
+async def brodypic(context):
+    await context.message.channel.send("https://imgur.com/4EZsemc")
+   
+    
 # Run the client on the server
 client.run(DISCORD_TOKEN)
