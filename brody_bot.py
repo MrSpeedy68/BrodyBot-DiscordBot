@@ -15,7 +15,7 @@ client = commands.Bot(command_prefix='!')
 # BARK
 @client.command(name='bark')
 async def bark(context):
-    await context.message.channel.send("WOOF WOOF")
+    await context.send("WOOF WOOF")
 
 # RANDOM DOG
 @client.command(name='randomdog')
@@ -29,12 +29,12 @@ async def randomdog(context):
                 color = context.author.color
             )
             embed.set_image(url=data['url'])
-            await context.message.channel.send(embed=embed)
+            await context.send(embed=embed)
 
 # BRODY PIC
 @client.command(name='brodypic')
 async def brodypic(context):
-    await context.message.channel.send("https://imgur.com/4EZsemc")
+    await context.send("https://imgur.com/4EZsemc")
 
 @client.event
 async def on_message(message):
