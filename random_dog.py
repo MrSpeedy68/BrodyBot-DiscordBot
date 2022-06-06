@@ -17,17 +17,53 @@ DISCORD_TOKEN = os.getenv("DISCORD_API_KEY")
 
 client = commands.Bot(command_prefix='!')
 
-@client.command(name='blur')
-async def random_dog(context):
+@client.command(name='danielvision')
+async def blur(context):
     await get_image_and_apply_filter(context,ImageFilter.GaussianBlur(8))
     
-
 @client.command(name='emboss')
-async def random_dog(context):
+async def emboss(context):
     await get_image_and_apply_filter(context, EMBOSS)
 
+@client.command(name='enchance')
+async def enchance(context):
+    await get_image_and_apply_filter(context, EDGE_ENHANCE)
+
+@client.command(name='smooth')
+async def smooth(context):
+    await get_image_and_apply_filter(context, SMOOTH)
+
+@client.command(name='findedges')
+async def findedges(context):
+    await get_image_and_apply_filter(context, FIND_EDGES)
+
+@client.command(name='contour')
+async def contour(context):
+    await get_image_and_apply_filter(context, CONTOUR)
+
+@client.command(name='mush')
+async def contour(context):
+    await get_image_and_apply_filter(context, ImageFilter.MinFilter(size=5))
+
+@client.command(name='greyscale')
+async def contour(context):
+    await get_image_and_apply_filter(context, ImageFilter.MinFilter(size=5))
+
+
+
+
+
+
+@client.command(name='test')
+async def test(context):
+    messages = await context.channel.history(limit=2).flatten()
+    for msg in messages:
+        print(msg.content)
+
+
+
 async def get_image_and_apply_filter(context, filter_type):
-    channel = context.message.channel
+    channel = context.channel
     #message = await channel.fetch_message(channel.last_message_id)
 
     async for message in channel.history(limit=2):
@@ -51,7 +87,5 @@ async def get_image_and_apply_filter(context, filter_type):
                 img1.save(image_binary, 'PNG')
                 image_binary.seek(0)
                 await context.send(file=discord.File(fp=image_binary,filename='img1.png'))
-        else:
-            await context.send("I need an image to work on!!!")
 
 client.run(DISCORD_TOKEN)
